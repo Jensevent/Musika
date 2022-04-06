@@ -30,7 +30,17 @@ jobs:
       - name: Build project
         run: dotnet build './walking-skeleton/walking-skeleton/walking-skeleton.sln'  
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # - name: Run a multi-line script
+      #   run: |
+      #     echo Add other actions to build,
+      #     echo test, and deploy your project.
+
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build docker image
+        run:  docker build . --file './walking-skeleton/walking-skeleton/Musika/Dockerfile' --tag musika_backend:latest
+       

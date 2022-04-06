@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Musika/Musika.csproj", "Musika/"]
+COPY ["walking-skeleton/walking-skeleton/Musika/Musika.csproj", "Musika/"]
 RUN dotnet restore "Musika/Musika.csproj"
 COPY . .
 WORKDIR "/src/Musika"
