@@ -8,8 +8,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["walking-skeleton/walking-skeleton/Musika/Musika.csproj", "Musika/"]
 RUN dotnet restore "Musika/Musika.csproj"
-COPY . .
+#COPY . .
 WORKDIR "/src/Musika"
+COPY . .
 RUN dotnet build "Musika.csproj" -c Release -o /app/build
 
 FROM build AS publish
