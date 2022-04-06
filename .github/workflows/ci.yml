@@ -5,6 +5,10 @@ on:
   push:
     branches: [ walking-skeleton ]
 
+env:
+  PATH_TO_SLN: './walking-skeleton/walking-skeleton/walking-skeleton.sln'
+
+
 jobs:
 
   build:
@@ -15,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install dependencies
-        run:  dotnet restore './walking-skeleton/walking-skeleton/walking-skeleton.sln'
+        run:  dotnet restore $PATH_TO_SLN
  
       - name: Build project
         run:  dotnet build './walking-skeleton/walking-skeleton/walking-skeleton.sln'  
