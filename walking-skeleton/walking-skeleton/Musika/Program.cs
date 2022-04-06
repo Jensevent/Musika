@@ -1,60 +1,33 @@
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//var summaries = new[]
-//{
-//    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-//};
-
-//app.MapGet("/weatherforecast", () =>
-//{
-//    var forecast = Enumerable.Range(1, 5).Select(index =>
-//       new WeatherForecast
-//       (
-//           DateTime.Now.AddDays(index),
-//           Random.Shared.Next(-20, 55),
-//           summaries[Random.Shared.Next(summaries.Length)]
-//       ))
-//        .ToArray();
-//    return forecast;
-//})
-//.WithName("GetWeatherForecast");
-
-//app.Run();
-
-//internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-//{
-//    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-//}
-
-
-
 using Musika.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add DB connection
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
-
-builder.Services.AddTransient<DataSeeder>();    
 builder.Services.AddDbContext<EmployeeDbContext>(x => x.UseSqlServer(connectionString));
+
+// Add dataSeeder
+builder.Services.AddTransient<DataSeeder>();
+
+// Add DataRepo as interface
+// When the IDataRepository is called, it will use DataRepository
+builder.Services.AddScoped<IDataRepository, DataRepository>();
+
+// Implimenting Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 
+// Add Swagger UI
+app.UseSwaggerUI();
+app.UseSwagger(x => x.SerializeAsV2 = true);
+
+// if 'dotnet run seeddata' is called, run the SeedData method
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
 {
     SeedData(app);
@@ -72,36 +45,40 @@ void SeedData(IHost app)
 }
 
 
-
+// Dev
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
 
-app.MapGet("/employee/{id}", ([FromServices] EmployeeDbContext db, string id) =>
+
+// Get Employee by Id
+app.MapGet("/employee/{id}", ([FromServices] IDataRepository db, string id) =>
 {
-    return db.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
+    return db.GetEmployee(id);
 
 });
 
-app.MapGet("/employees", ( [FromServices] EmployeeDbContext db) =>
+// Return all employees in the database
+app.MapGet("/employees", ( [FromServices] IDataRepository db) =>
 {
-    return db.Employees.ToList();
+    return db.GetEmployees();
 
 });
 
-app.MapPut("/employee/{id}", ([FromServices] EmployeeDbContext db, Employee employee) =>
+// Update an existing employee
+app.MapPut("/employee/{id}", ([FromServices] IDataRepository db, Employee employee) =>
 {
-    db.Employees.Update(employee);
-    db.SaveChanges();
-    return db.Employees.Where(x => x.EmployeeId == employee.EmployeeId).FirstOrDefault();
+    return db.PutEmployee(employee);
 });
 
-app.MapPost("/employee", ([FromServices] EmployeeDbContext db, Employee employee) =>
+
+// Add a new employee
+app.MapPost("/employee", ([FromServices] IDataRepository db, Employee employee) =>
 {
-    db.Employees.Add(employee);
-    db.SaveChanges();
-    return db.Employees.ToList();
+    return db.AddEmployee(employee);
 });
 
+
+// Run the app
 app.Run();
