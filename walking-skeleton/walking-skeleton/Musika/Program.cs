@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add DB connection
-//var connectionString = builder.Configuration.GetConnectionString("AppDb");
-var connectionString = "Server=192.168.0.44;Database=master;User Id=sa;Password=Welkom12345;";
+var connectionString = builder.Configuration.GetConnectionString("AppDb");
+//var connectionString = "Server=192.168.0.44;Database=master;User Id=sa;Password=Welkom12345;";
 builder.Services.AddDbContext<EmployeeDbContext>(x => x.UseSqlServer(connectionString));
 
 // Add dataSeeder
