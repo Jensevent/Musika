@@ -10,10 +10,10 @@ COPY ["walking-skeleton/walking-skeleton/Musika/Musika.csproj", "Musika/"]
 RUN dotnet restore "Musika/Musika.csproj"
 COPY . .
 WORKDIR "/src/Musika"
-RUN dotnet build "Musika.csproj" -c Release -o /app/build
+RUN dotnet build "Musika/Musika.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Musika.csproj" -c Release -o /app/publish
+RUN dotnet publish "Musika/Musika.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
