@@ -24,6 +24,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<EmployeeDbContext>();
+    y.Database.Migrate();
+}
+
+
+
 // Add Swagger UI
 app.UseSwaggerUI();
 app.UseSwagger(x => x.SerializeAsV2 = true);
