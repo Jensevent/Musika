@@ -80,5 +80,10 @@ app.MapPost("/employee", ([FromServices] IDataRepository db, Employee employee) 
 });
 
 
+app.MapGet("/dbconn", ([FromServices] IDataRepository db) =>
+{
+    return db.CheckDbConn();
+});
+
 // Run the app
 app.Run();

@@ -30,5 +30,10 @@
         {
             return db.Employees.Where(x => x.EmployeeId == Id).FirstOrDefault();
         }
+
+        public Boolean CheckDbConn()
+        {
+            return db.Database.CanConnect();
+        }
     }
 }

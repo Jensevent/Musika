@@ -7,5 +7,7 @@ namespace Musika.Model
         List<Employee> GetEmployees();
         Employee PutEmployee(Employee employee);
         Employee GetEmployee(string id);
+
+        Boolean CheckDbConn();
     }
 }

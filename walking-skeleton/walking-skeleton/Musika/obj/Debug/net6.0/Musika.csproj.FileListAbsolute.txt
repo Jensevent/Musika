@@ -42,8 +42,6 @@ D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\bin\Debug\net6.0\runtimes
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.csproj.AssemblyReference.cache
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.GeneratedMSBuildEditorConfig.editorconfig
-D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.AssemblyInfoInputs.cache
-D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.AssemblyInfo.cs
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.csproj.CoreCompileInputs.cache
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.MvcApplicationPartsAssemblyInfo.cs
 D:\Git\Musika\walking-skeleton\walking-skeleton\Musika\obj\Debug\net6.0\Musika.MvcApplicationPartsAssemblyInfo.cache
