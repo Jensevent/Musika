@@ -1,0 +1,21 @@
+version: "2"
+services:
+  musika_backend:
+    build:
+      dockerfile: "./walking-skeleton/walking-skeleton/Musika/Dockerfile"
+    depends_on: [db]
+    ports:
+      - "8080:80"
+    command:
+      - "dotnet-ef migrations add initial"
+      - "dotnet-ef database update"
+      
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: db
+    hostname: db
+    environment:
+      SA_PASSWORD: "Welkom12345"
+      ACCEPT_EULA: "Y"   
+    ports:
+      - "11433:1433" 
