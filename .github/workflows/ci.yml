@@ -43,4 +43,15 @@ jobs:
 
       - name: Build docker image
         run:  docker build . --file './walking-skeleton/walking-skeleton/Musika/Dockerfile' --tag musika_backend:latest
-       
+
+      - name: Login into docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCTOKEN }} 
+
+      - name: Tag image to repo
+        run:  docker tag musika_backend:latest jensevent/musika_backend
+
+      - name: push image to docker hub
+        run:  docker push jensevent/musika_backend
