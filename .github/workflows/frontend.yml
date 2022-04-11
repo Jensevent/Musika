@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Go to frontend folder
-      run:  cd 'front-end/my-app'
+      run:  cd './front-end/my-app'
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
