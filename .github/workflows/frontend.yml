@@ -36,7 +36,7 @@ jobs:
     - run: npm --prefix $PATH_TO_PACK run build --if-present
     - run: npm --prefix $PATH_TO_PACK test
 
-docker:
+  docker:
     runs-on: ubuntu-latest
 
     steps:
