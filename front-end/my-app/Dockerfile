@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY front-end/my-app ./
 
+RUN ls
+
 RUN npm run build
 
 COPY . .
