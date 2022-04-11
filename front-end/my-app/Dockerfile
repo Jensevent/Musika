@@ -10,4 +10,4 @@ RUN npm run build
 
 COPY . .
 
-CMD ["npx", "serve -s build "]
+CMD ["node", "run", "start"]
