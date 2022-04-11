@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Clone repo to runner
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run:  dotnet restore $PATH_TO_SLN
@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Clone repo to runner
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       
       - name: Install dependencies
         run:  dotnet restore $PATH_TO_SLN
@@ -53,7 +53,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Clone repo to runner
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Build docker image
         run:  docker build . --file $PATH_TO_DOCKERFILE --tag $DOCKER_IMAGE_NAME
