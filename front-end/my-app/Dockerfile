@@ -12,5 +12,5 @@ COPY . .
 
 #CMD ["npm", "start"]
 
-CMD ["npx", "serve", "-s", "build"]
-#npx serve -s build
+#CMD ["npx", "serve", "-s", "build"]
+CMD ["serve", "-s", "build"]
