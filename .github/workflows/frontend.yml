@@ -12,7 +12,7 @@ env:
   PATH_TO_PACK: './front-end/my-app'
   PATH_TO_DOCKERFILE: './front-end/my-app/Dockerfile'
   DOCKER_IMAGE_NAME: musika_frontend:latest
-  DOCKER_REPO_NAME: jensevent/musika_frontend
+  DOCKER_REPO_NAME: jensevent/musika-frontend
 
 jobs:
   # build:
