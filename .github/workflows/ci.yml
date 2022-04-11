@@ -3,7 +3,7 @@ name: CI
 
 on:
   push:
-    branches: [ walking-skeleton ]
+    branches: [ main ]
 
 env:
   PATH_TO_SLN: './walking-skeleton/walking-skeleton/walking-skeleton.sln'
