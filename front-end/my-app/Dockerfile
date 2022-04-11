@@ -16,8 +16,8 @@ EXPOSE 3000
 
 #CMD serve -s build
 
-CMD npm run build
+#CMD npm run build
 #CMD ["npm", "start"]
 
 #CMD ["npx", "serve", "-s", "build"]
-#MD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build"]
