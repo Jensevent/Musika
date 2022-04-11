@@ -10,6 +10,9 @@ on:
 
 env:
   PATH_TO_PACK: './front-end/my-app'
+  PATH_TO_DOCKERFILE: './front-end/my-app/Dockerfile'
+  DOCKER_IMAGE_NAME: musika_frontend:latest
+  DOCKER_REPO_NAME: jensevent/musika_frontend
 
 jobs:
   build:
@@ -32,3 +35,29 @@ jobs:
     - run: npm --prefix $PATH_TO_PACK ci 
     - run: npm --prefix $PATH_TO_PACK run build --if-present
     - run: npm --prefix $PATH_TO_PACK test
+
+docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: Build docker image
+        run:  docker build . --file $PATH_TO_DOCKERFILE --tag $DOCKER_IMAGE_NAME
+
+      - name: Login into docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCTOKEN }} 
+
+      - name: Tag image to repo
+        run:  docker tag $DOCKER_IMAGE_NAME $DOCKER_REPO_NAME
+
+      - name: Push image to docker hub
+        run:  docker push $DOCKER_REPO_NAME
+
+      - name: Docker logout
+        run:  docker logout
