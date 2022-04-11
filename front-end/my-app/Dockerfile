@@ -10,4 +10,4 @@ RUN npm run build
 
 COPY . .
 
-CMD ["node", "run", "start"]
+CMD ["node", "start"]
