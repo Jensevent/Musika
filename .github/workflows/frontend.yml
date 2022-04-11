@@ -9,7 +9,7 @@ on:
 
 
 env:
-  PATH_TO_PACK: './front-end/my-app/package.json'
+  PATH_TO_PACK: './front-end/my-app'
 
 jobs:
   build:
@@ -29,6 +29,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
-    - run: npm ci $PATH_TO_PACK
+
+    - run: cd $PATH_TO_PACK
+    - run: npm ci 
     - run: npm run build --if-present
     - run: npm test
