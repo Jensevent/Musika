@@ -10,4 +10,7 @@ RUN npm run build
 
 COPY . .
 
-CMD ["npm", "start"]
+#CMD ["npm", "start"]
+
+CMD ["npx", "serve", "-s", "build"]
+#npx serve -s build
