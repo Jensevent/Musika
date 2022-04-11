@@ -2,7 +2,7 @@ FROM node
 
 WORKDIR /app
 
-COPY "/front-end/my-app/package*.json" .
+COPY "/front-end/my-app/package*.json" ./
 
 RUN npm run build
 
