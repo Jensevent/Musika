@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY front-end/my-app ./
 
-RUN ls
+RUN npm install
 
 RUN npm run build
 
