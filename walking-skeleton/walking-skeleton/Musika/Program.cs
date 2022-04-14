@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add DB connection
-var connectionString = builder.Configuration.GetConnectionString("AppDb");
+var connectionString = Environment.GetEnvironmentVariable("ConnString");
+//var connectionString = builder.Configuration.GetConnectionString("AppDb");
 //var connectionString = "Server=192.168.0.44;Database=master;User Id=sa;Password=Welkom12345;";
 builder.Services.AddDbContext<EmployeeDbContext>(x => x.UseSqlServer(connectionString));
 
@@ -94,10 +95,6 @@ app.MapGet("/dbconn", ([FromServices] IDataRepository db) =>
     return db.CheckDbConn();
 });
 
-app.MapGet("/env/get", () =>
-{
-    return Environment.GetEnvironmentVariable("Test");
-});
 
 
 // Run the app
