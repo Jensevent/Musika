@@ -94,5 +94,11 @@ app.MapGet("/dbconn", ([FromServices] IDataRepository db) =>
     return db.CheckDbConn();
 });
 
+app.MapGet("/env/get", () =>
+{
+    return Environment.GetEnvironmentVariable("Test");
+});
+
+
 // Run the app
 app.Run();
