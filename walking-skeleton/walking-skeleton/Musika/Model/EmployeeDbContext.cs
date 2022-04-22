@@ -24,8 +24,8 @@ namespace Musika.Model
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            //var connectionString = configuration.GetConnectionString("AppDb");
-            var connectionString = Environment.GetEnvironmentVariable("ConnString");
+            var connectionString = configuration.GetConnectionString("AppDb");
+            //var connectionString = Environment.GetEnvironmentVariable("ConnString");
 
             optionsBuilder.UseSqlServer(connectionString);
         }
