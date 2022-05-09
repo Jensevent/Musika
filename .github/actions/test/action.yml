@@ -9,10 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Clone repo to runner
-    # shell: bash
-    #   uses: actions/checkout@v3
+    - name: Clone repo to runner
+      uses: actions/checkout@v3
 
-    - name: test ${{inputs.foo}}
-      shell: bash
-      run :  echo ${{inputs.foo}}
+    - name: Install dependencies 
+      run :  dotnet restore ${{inputs.foo}}

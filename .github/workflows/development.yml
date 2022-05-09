@@ -17,7 +17,7 @@ jobs:
     
       - uses: ./.github/actions/test
         with:
-          foo: "bar"
+          foo: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
 
 
     # runs-on: ubuntu-latest  
