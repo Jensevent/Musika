@@ -13,7 +13,8 @@ jobs:
       matrix:
         test: [
           {
-            object: "abc"
+            PATH_TO_CSPROJ: "abc",
+            PATH_TO_TEST_CSPROJ: "CDF"
           },
           {
             object: "def"
@@ -25,5 +26,8 @@ jobs:
       - uses: actions/checkout@v3
 
       
-      - name: Test ${{matrix.test.object}}
+      - name: build ${{matrix.test.PATH_TO_CSPROJ}}
+        run : echo ${{matrix.test}} 
+
+      - name: test ${{matrix.test.PATH_TO_TEST_CSPROJ}}
         run : echo ${{matrix.test}} 
