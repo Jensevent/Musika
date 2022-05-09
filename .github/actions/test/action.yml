@@ -1,4 +1,5 @@
 name: "Deploy test"
+shell: bash
 description: "test a deploy function"
 inputs:
   foo:
