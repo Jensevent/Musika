@@ -1,25 +1,17 @@
 name: Development
-
 on:
   push:
     branches: [dev]
 
-
 jobs:
   build:
+    
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        test: [
-          {
-            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
-            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-          },
-          {
-            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
-            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-          }
-        ]
+        test:
+          - "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+          - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
 
     steps:
       - name: Clone repo to runner
@@ -28,8 +20,35 @@ jobs:
       - name: build 
         uses: ./.github/actions/test
         with:
-          PATH_TO_CSPROJ: ${{matrix.test.PATH_TO_CSPROJ}}
-          PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}
+          PATH_TO_CSPROJ: ${{matrix.test}}
+          # PATH_TO_TEST_CSPROJ: ${{matrix.array.PATH_TO_TEST_CSPROJ}}
+
+
+    
+    # WORKS WITH V1 Actions
+    # runs-on: ubuntu-latest
+    # strategy:
+    #   matrix: 
+    #     array: [
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+    #       },
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Chords.Microservice/Chords.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
+    #       }
+    #     ]
+
+    # steps:
+    #   - name: Clone repo to runner
+    #     uses: actions/checkout@v3
+    
+    #   - name: build 
+    #     uses: ./.github/actions/test
+    #     with:
+    #       PATH_TO_CSPROJ: ${{matrix.array.PATH_TO_CSPROJ}}
+    #       PATH_TO_TEST_CSPROJ: ${{matrix.array.PATH_TO_TEST_CSPROJ}}
 
 
 

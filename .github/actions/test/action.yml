@@ -1,24 +1,41 @@
-name: "Build and test"
+name: "Build"
 description: "A custom composite action to build and test a microservice"
 inputs:
   PATH_TO_CSPROJ:
     required: true
     decription: "Path to the csproj file of the main microservice"
-  PATH_TO_TEST_CSPROJ:
-    required: true
-    decription: "Path to the csproj file of the test project"
-
-
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3
-
     - run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
-      shell: bash
-
-    - run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
-      shell: bash
-    
+      shell: bash  
     - run : dotnet build ${{inputs.PATH_TO_CSPROJ}}
       shell: bash
+
+
+# WORKS v1
+# name: "Build and test"
+# description: "A custom composite action to build and test a microservice"
+# inputs:
+#   PATH_TO_CSPROJ:
+#     required: true
+#     decription: "Path to the csproj file of the main microservice"
+#   PATH_TO_TEST_CSPROJ:
+#     required: true
+#     decription: "Path to the csproj file of the test project"
+
+
+# runs:
+#   using: "composite"
+#   steps:
+#     - uses: actions/checkout@v3
+
+#     - run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
+#       shell: bash
+
+#     - run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
+#       shell: bash
+    
+#     - run : dotnet build ${{inputs.PATH_TO_CSPROJ}}
+#       shell: bash
