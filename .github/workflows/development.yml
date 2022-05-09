@@ -13,8 +13,7 @@ jobs:
         test: ["A", "B"]
     
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      - uses: actions/checkout@v3
       
       - name: Test
          run: echo ${{matrix.test}}
