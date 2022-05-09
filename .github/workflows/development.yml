@@ -42,7 +42,7 @@ jobs:
       - name: build 
         uses: ./.github/actions/test
         with:
-          PATH_TO_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
+          PATH_TO_TEST_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
     
     # WORKS WITH V1 Actions
     # runs-on: ubuntu-latest
