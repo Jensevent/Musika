@@ -18,4 +18,4 @@ runs:
     - name: Install dependencies
       shell: bash 
       run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
-      # run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
+      run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
