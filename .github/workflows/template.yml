@@ -1,0 +1,26 @@
+name: Backend Template
+
+on:
+  workflow_call:
+    inputs:
+      PATH_TO_CSPROJ:
+        required: true
+        type: string
+      PATH_TO_TEST_CSPROJ:
+        required: true
+        type: string
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 
+        run:  dotnet restore $PATH_TO_CSPROJ
+        run:  dotnet restore $PATH_TO_TEST_CSPROJ
+ 
+      - name: Build project
+        run:  dotnet build $PATH_TO_CSPROJ 
