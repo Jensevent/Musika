@@ -8,8 +8,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Clone repo to runner
-    #   uses: actions/checkout@v3
+    - name: Clone repo to runner
+      uses: actions/checkout@v3
 
     - name: test ${{inputs.foo}}
       run :  echo ${{inputs.foo}}
