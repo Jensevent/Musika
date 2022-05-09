@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
       - uses: ./.github/actions/test/action
         with:
           foo: "bar"
