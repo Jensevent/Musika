@@ -15,7 +15,7 @@ jobs:
       - name: Clone repo to runner
         uses: actions/checkout@v3
     
-      - uses: Jensevent/Musika/.github/actions/test/action.yml@dev
+      - uses: ./.github/actions/test
         with:
           foo: "bar"
 
