@@ -14,4 +14,5 @@ runs:
     #   uses: actions/checkout@v3
 
     - name: test ${{inputs.foo}}
+      shell: bash
       run :  echo ${{inputs.foo}}
