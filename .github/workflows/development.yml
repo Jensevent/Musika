@@ -14,8 +14,8 @@ jobs:
           - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
 
     steps:
-      - name: Clone repo to runner
-        uses: actions/checkout@v3
+      # - name: Clone repo to runner
+      #   uses: actions/checkout@v3
     
       - name: build 
         uses: ./.github/actions/test
