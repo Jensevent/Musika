@@ -12,5 +12,6 @@ runs:
     - name: Clone repo to runner
       uses: actions/checkout@v3
 
-    - name: Install dependencies 
+    - name: Install dependencies
+      shell: bash 
       run :  dotnet restore ${{inputs.foo}}
