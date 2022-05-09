@@ -11,9 +11,8 @@ jobs:
     
     strategy:
       matrix:
-        test:
-        [
-           {
+        test: [
+          {
             object: "abc"
           },
           {
