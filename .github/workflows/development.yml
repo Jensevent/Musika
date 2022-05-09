@@ -18,13 +18,31 @@ jobs:
     steps:
       - name: Clone repo to runner
         uses: actions/checkout@v3
-        
+
       - name: build 
-        uses: ./.github/actions/test
+        uses: ./.github/actions/build
         with:
           PATH_TO_CSPROJ: ${{matrix.PATH_TO_CSPROJ}}
 
+    test: 
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        PATH_TO_CSPROJ:
+          - "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+          - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          - "./Musika.Backend/Chords.Microservice/Chords.Microservice.csproj"
+          - "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
+          - "./Musika.Backend/API.Gateway/API.Gateway.csproj"
 
+    steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: build 
+        uses: ./.github/actions/test
+        with:
+          PATH_TO_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
     
     # WORKS WITH V1 Actions
     # runs-on: ubuntu-latest

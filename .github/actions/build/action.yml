@@ -1,15 +1,15 @@
-name: "Test"
-description: "A custom composite action to test a microservice"
+name: "Build"
+description: "A custom composite action to build a microservice"
 inputs:
-  PATH_TO_TEST_CSPROJ:
+  PATH_TO_CSPROJ:
     required: true
-    decription: "Path to the csproj file of the microservice"
+    decription: "Path to the csproj file of the  microservice"
 runs:
   using: "composite"
   steps:
-    - run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
+    - run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
       shell: bash  
-    - run : dotnet test ${{inputs.PATH_TO_TEST_CSPROJ}}
+    - run : dotnet build ${{inputs.PATH_TO_CSPROJ}}
       shell: bash
 
 
