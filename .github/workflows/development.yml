@@ -24,7 +24,7 @@ jobs:
         with:
           PATH_TO_CSPROJ: ${{matrix.PATH_TO_CSPROJ}}
 
-    test: 
+  test: 
     runs-on: ubuntu-latest
     strategy:
       matrix: 
