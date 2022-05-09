@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test: ["A", "B"]
+        test:
+          - "A"
+          - "B"
     
     steps:
       - uses: actions/checkout@v3
