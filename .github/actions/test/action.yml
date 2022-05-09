@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
+    # - uses: actions/checkout@v3
     - run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
       shell: bash  
     - run : dotnet build ${{inputs.PATH_TO_CSPROJ}}
