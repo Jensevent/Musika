@@ -7,19 +7,46 @@ on:
 
 jobs:
   build:
-
-
     runs-on: ubuntu-latest
+    strategy:
+      matrix: [
+          {
+            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          },
+          {
+            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          }
+        ]
 
     steps:
       - name: Clone repo to runner
         uses: actions/checkout@v3
     
-      - name: build + test
+      - name: build 
         uses: ./.github/actions/test
         with:
-          PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
-          PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          PATH_TO_CSPROJ: ${{matrix.PATH_TO_CSPROJ}}
+          PATH_TO_TEST_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
+
+
+
+
+
+
+
+    # WORKS
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Clone repo to runner
+    #     uses: actions/checkout@v3
+    
+    #   - name: build 
+    #     uses: ./.github/actions/test
+    #     with:
+    #       PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+    #       PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
 
 
     # runs-on: ubuntu-latest  
