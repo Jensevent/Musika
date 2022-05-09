@@ -8,14 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     strategy:
       matrix:
         test:
           - "A"
           - "B"
+        value:
+          - "C"
+          - "D"
     
     steps:
       - uses: actions/checkout@v3
+
       
-      - name: Test
-        run : echo ${{matrix.test}}
+      - name: Test ${{matrix.test}} + ${{matrix.value}}
+        run : echo ${{matrix.test}} + ${{matrix.value}}
