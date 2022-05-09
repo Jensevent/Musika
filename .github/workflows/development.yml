@@ -11,9 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        test:
-          - "A"
-          - "B"
+        test: ["A", "B"]
     
     steps:
       - name: Test
