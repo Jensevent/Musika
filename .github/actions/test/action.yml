@@ -1,5 +1,5 @@
 name: "Deploy test"
-shell: bash
+# shell: bash
 description: "test a deploy function"
 inputs:
   foo:
@@ -9,8 +9,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Clone repo to runner
-      uses: actions/checkout@v3
+    # - name: Clone repo to runner
+    # shell: bash
+    #   uses: actions/checkout@v3
 
     - name: test ${{inputs.foo}}
       run :  echo ${{inputs.foo}}
