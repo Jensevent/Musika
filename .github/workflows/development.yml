@@ -27,9 +27,9 @@ jobs:
     #     PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}         
 
     uses: Jensevent/Musika/.github/workflows/template.yml@dev
-      with:
-        PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
-        PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"      
+    with:
+      PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+      PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"      
 
     
     # steps:
