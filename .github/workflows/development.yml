@@ -9,7 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      matrix: [
+      matrix: 
+        test: [
           {
             PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
             PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
@@ -27,8 +28,8 @@ jobs:
       - name: build 
         uses: ./.github/actions/test
         with:
-          PATH_TO_CSPROJ: ${{matrix.PATH_TO_CSPROJ}}
-          PATH_TO_TEST_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
+          PATH_TO_CSPROJ: ${{matrix.test.PATH_TO_CSPROJ}}
+          PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}
 
 
 
