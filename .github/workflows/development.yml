@@ -25,8 +25,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      
-      - uses: ./.github/workflows/template.yml
+
+      - uses: ./.github/workflows/
         with:
           PATH_TO_CSPROJ: ${{matrix.test.PATH_TO_CSPROJ}},
           PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}
