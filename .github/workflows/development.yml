@@ -12,15 +12,12 @@ jobs:
     strategy:
       matrix:
         test:
-          - "A"
-          - "B"
-        value:
+          - ["A", "B"]
           - "C"
-          - "D"
     
     steps:
       - uses: actions/checkout@v3
 
       
-      - name: Test ${{matrix.test}} + ${{matrix.value}}
-        run : echo ${{matrix.test}} + ${{matrix.value}}
+      - name: Test ${{matrix.test}}
+        run : echo ${{matrix.test}} 
