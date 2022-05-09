@@ -22,5 +22,5 @@ jobs:
         run :  dotnet restore ${{inputs.PATH_TO_CSPROJ}}
         #run :  dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
  
-      - name: Build project
-        run:  dotnet build ${{inputs.PATH_TO_CSPROJ}} 
+      # - name: Build project
+      #   run:  dotnet build ${{inputs.PATH_TO_CSPROJ}} 

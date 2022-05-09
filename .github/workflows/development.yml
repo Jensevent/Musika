@@ -8,18 +8,18 @@ on:
 jobs:
   build:
     # runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     test: [
-    #       {
-    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
-    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-    #       },
-    #       {
-    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
-    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-    #       }
-    #     ]
+    strategy:
+      matrix:
+        test: [
+          {
+            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          },
+          {
+            PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+            PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          }
+        ]
 
     #  uses: Jensevent/Musika/.github/workflows/template.yml@dev
     #   with:
