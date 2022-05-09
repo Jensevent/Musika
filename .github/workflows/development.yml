@@ -18,7 +18,7 @@ jobs:
       # - name: build + test
       - uses: ./.github/actions/test
         with:
-          PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+          PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
           PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
 
 
