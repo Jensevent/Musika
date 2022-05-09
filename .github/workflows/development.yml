@@ -12,12 +12,16 @@ jobs:
     strategy:
       matrix:
         test:
-          - ["A", "B"]
-          - "C"
+          - {
+            object: "abc"
+          }
+          - {
+            object: "def"
+          }
     
     steps:
       - uses: actions/checkout@v3
 
       
-      - name: Test ${{matrix.test[0]}}
+      - name: Test ${{matrix.test.object}}
         run : echo ${{matrix.test}} 
