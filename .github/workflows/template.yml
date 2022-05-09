@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies 
         run:  dotnet restore $PATH_TO_CSPROJ
-        run:  dotnet restore $PATH_TO_TEST_CSPROJ
+        # run:  dotnet restore $PATH_TO_TEST_CSPROJ
  
       - name: Build project
         run:  dotnet build $PATH_TO_CSPROJ 
