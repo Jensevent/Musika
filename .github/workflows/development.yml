@@ -15,9 +15,11 @@ jobs:
       - name: Clone repo to runner
         uses: actions/checkout@v3
     
-      - uses: ./.github/actions/test
+      - name: build + test
+        uses: ./.github/actions/test
         with:
-          foo: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+          PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+          PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
 
 
     # runs-on: ubuntu-latest  
