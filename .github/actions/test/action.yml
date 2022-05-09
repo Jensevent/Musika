@@ -1,0 +1,15 @@
+name: "Deploy test"
+description: "test a deploy function"
+inputs:
+  foo:
+    required: true
+    decription: "ABC"
+
+runs:
+  using: "composite"
+  steps:
+    # - name: Clone repo to runner
+    #   uses: actions/checkout@v3
+
+    - name: test ${{inputs.foo}}
+      run :  echo ${{inputs.foo}}
