@@ -48,7 +48,7 @@ jobs:
       matrix: 
         array: [
           {
-            PATH_TO_DOCKERFILE: "./Musika.Backend/Audio.Microservice/Dockerfile",
+            PATH_TO_DOCKERFILE: "./Musika.Backend/Audio.Microservice/",
             DOCKER_IMAGE_NAME: "audio_microservice",
             DOCKER_REPO_NAME: "audio_microservice"
           }
