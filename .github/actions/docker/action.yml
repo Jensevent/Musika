@@ -19,7 +19,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run : docker build . ${{inputs.PATH_TO_DOCKERFILE}} --tag ${{inputs.DOCKER_IMAGE_NAME}}
+    - run : docker build ${{inputs.PATH_TO_DOCKERFILE}} --tag ${{inputs.DOCKER_IMAGE_NAME}}
       shell: bash  
 
     - uses: docker/login-action@v1
