@@ -54,18 +54,18 @@ jobs:
           }
       ]
 
-      steps:
-      - name: Clone repo to runner
-        uses: actions/checkout@v3
+    steps:
+    - name: Clone repo to runner
+      uses: actions/checkout@v3
 
-      - name: build 
-        uses: ./.github/actions/docker
-        with:
-          PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
-          DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
-          DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
-          DOCKER_ACCTOKEN: ${{secrets.DOCKER_ACCTOKEN}}
-          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+    - name: build 
+      uses: ./.github/actions/docker
+      with:
+        PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
+        DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
+        DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
+        DOCKER_ACCTOKEN: ${{secrets.DOCKER_ACCTOKEN}}
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
 
     # WORKS WITH V1 Actions
     # runs-on: ubuntu-latest
