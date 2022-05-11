@@ -8,8 +8,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Audio.Microservice.csproj", "Audio.Microservice/"]
 RUN dotnet restore "Audio.Microservice/Audio.Microservice.csproj"
-COPY . .
 WORKDIR "/src/Audio.Microservice"
+COPY . .
 RUN dotnet build "Audio.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
