@@ -1,0 +1,55 @@
+name: "Docker"
+description: "A custom composite action to deploy a microservice to dockerhub"
+inputs:
+  PATH_TO_DOCKERFILE:
+    required: true
+    decription: "Path to the docker file of the microservice"
+  DOCKER_IMAGE_NAME:
+    required: true
+    decription: "Name of the docker image"
+  DOCKER_REPO_NAME:
+    required: true
+    decription: "Name of the docker image"
+runs:
+  using: "composite"
+  steps:
+    - run : docker build . ${{inputs.PATH_TO_DOCKERFILE}} --tag ${{inputs.DOCKER_IMAGE_NAME}}
+      shell: bash  
+
+    - uses: docker/login-action@v1
+      shell: bash
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_ACCTOKEN }} 
+
+    - run : docker tag ${{inputs.DOCKER_IMAGE_NAME}} ${{inputs.DOCKER_REPO_NAME}}
+      shell: bash
+
+    - run : docker push ${{inputs.DOCKER_REPO_NAME}}
+      shell: bash
+
+# WORKS v1
+# name: "Build and test"
+# description: "A custom composite action to build and test a microservice"
+# inputs:
+#   PATH_TO_CSPROJ:
+#     required: true
+#     decription: "Path to the csproj file of the main microservice"
+#   PATH_TO_TEST_CSPROJ:
+#     required: true
+#     decription: "Path to the csproj file of the test project"
+
+
+# runs:
+#   using: "composite"
+#   steps:
+#     - uses: actions/checkout@v3
+
+#     - run : dotnet restore ${{inputs.PATH_TO_CSPROJ}}
+#       shell: bash
+
+#     - run : dotnet restore ${{inputs.PATH_TO_TEST_CSPROJ}}
+#       shell: bash
+    
+#     - run : dotnet build ${{inputs.PATH_TO_CSPROJ}}
+#       shell: bash
