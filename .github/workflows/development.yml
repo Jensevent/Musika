@@ -41,6 +41,30 @@ jobs:
         with:
           PATH_TO_TEST_CSPROJ: ${{matrix.PATH_TO_TEST_CSPROJ}}
     
+
+  containerize:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        array: [
+          {
+            PATH_TO_DOCKERFILE: "./Musika.Backend/Audio.Microservice/Dockerfile",
+            DOCKER_IMAGE_NAME: "audio_microservice",
+            DOCKER_REPO_NAME: "audio_microservice"
+          }
+      ]
+
+      steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: build 
+        uses: ./.github/actions/docker
+        with:
+          PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
+          DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
+          DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
+
     # WORKS WITH V1 Actions
     # runs-on: ubuntu-latest
     # strategy:

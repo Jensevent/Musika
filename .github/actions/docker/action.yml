@@ -9,7 +9,13 @@ inputs:
     decription: "Name of the docker image"
   DOCKER_REPO_NAME:
     required: true
-    decription: "Name of the docker image"
+    decription: "Name of the docker repo"
+  DOCKER_ACCTOKEN:
+    required: true
+    decription: "Dockerhub access token"
+  DOCKER_USERNAME:
+    required: true
+    decription: "Dockerhub username"
 runs:
   using: "composite"
   steps:
