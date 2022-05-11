@@ -6,8 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-RUN ls
-COPY ["/Musika.Backend/Audio.Microservice/Audio.Microservice.csproj", "Audio.Microservice/"]
+CMD ls
+COPY ["Musika.Backend/Audio.Microservice/Audio.Microservice.csproj", "Audio.Microservice/"]
 RUN dotnet restore "Audio.Microservice/Audio.Microservice.csproj"
 COPY . .
 WORKDIR "/src/Audio.Microservice"
