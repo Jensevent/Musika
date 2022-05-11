@@ -50,7 +50,7 @@ jobs:
           {
             PATH_TO_DOCKERFILE: "./Musika.Backend/Audio.Microservice/",
             DOCKER_IMAGE_NAME: "audio_microservice",
-            DOCKER_REPO_NAME: "audio_microservice_repo"
+            DOCKER_REPO_NAME: "jensevent/audio_microservice"
           }
       ]
 
