@@ -10,10 +10,10 @@ jobs:
       matrix: 
         PATH_TO_CSPROJ:
           - "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
-          # - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-          # - "./Musika.Backend/Chords.Microservice/Chords.Microservice.csproj"
-          # - "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
-          # - "./Musika.Backend/API.Gateway/API.Gateway.csproj"
+          - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+          - "./Musika.Backend/Chords.Microservice/Chords.Microservice.csproj"
+          - "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
+          - "./Musika.Backend/API.Gateway/API.Gateway.csproj"
 
     steps:
       - name: Clone repo to runner
@@ -30,7 +30,7 @@ jobs:
       matrix: 
         PATH_TO_TEST_CSPROJ:
           - "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
-          # - "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
+          - "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
 
     steps:
       - name: Clone repo to runner
@@ -44,6 +44,9 @@ jobs:
 
   containerize:
     runs-on: ubuntu-latest
+    needs:
+      - build
+      - test
     strategy:
       matrix: 
         array: [
@@ -51,6 +54,11 @@ jobs:
             PATH_TO_DOCKERFILE: "./Musika.Backend/Audio.Microservice/",
             DOCKER_IMAGE_NAME: "audio_microservice",
             DOCKER_REPO_NAME: "jensevent/audio_microservice"
+          },
+          {
+            PATH_TO_DOCKERFILE: "./Musika.Backend/Chords.Microservice/",
+            DOCKER_IMAGE_NAME: "chords_microservice",
+            DOCKER_REPO_NAME: "jensevent/chords_microservice"
           }
       ]
 

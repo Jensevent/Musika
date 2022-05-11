@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Chords.Microservice/Chords.Microservice.csproj", "Chords.Microservice/"]
+COPY ["Chords.Microservice.csproj", "Chords.Microservice/"]
 RUN dotnet restore "Chords.Microservice/Chords.Microservice.csproj"
-COPY . .
 WORKDIR "/src/Chords.Microservice"
+COPY . .
 RUN dotnet build "Chords.Microservice.csproj" -c Release -o /app/build
 
 FROM build AS publish
