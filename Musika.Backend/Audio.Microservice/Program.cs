@@ -56,7 +56,9 @@ if (app.Environment.IsDevelopment())
 // Easy check to see if API works
 app.MapGet("/", () =>
 {
-    return "Hello World!";
+    return connectionString;
+
+    //return "Hello World!";
 });
 
 // GET all songs
