@@ -13,13 +13,24 @@ namespace Audio.Microservice.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
+            string connectionString = "";
+
+            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIROMENT") == "Development")
+            {
+                var configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
+
+               connectionString = configuration.GetConnectionString("AppDb");
+                
+            }
+            else
+            {
+                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+            }
 
 
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
