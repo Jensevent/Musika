@@ -56,7 +56,8 @@ if (app.Environment.IsDevelopment())
 // Easy check to see if API works
 app.MapGet("/", () =>
 {
-    return connectionString;
+    string[] x = new string[]{ connectionString,  Environment.GetEnvironmentVariable("ConnectionStrings:AppDb")};
+    return x;
 
     //return "Hello World!";
 });
