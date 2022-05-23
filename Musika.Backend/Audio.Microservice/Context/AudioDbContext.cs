@@ -15,7 +15,7 @@ namespace Audio.Microservice.Context
         {
             string connectionString = "";
 
-            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIROMENT") == "Development")
+            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
                 var configuration = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
@@ -28,6 +28,7 @@ namespace Audio.Microservice.Context
             else
             {
                 connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+                Console.Write(connectionString);
             }
 
 
