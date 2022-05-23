@@ -24,6 +24,15 @@ builder.Services.AddSwaggerGen();
 // Build the app
 var app = builder.Build();
 
+// Automatically Migrate the database
+using (var scope = app.Services.CreateScope())
+{
+    var y = scope.ServiceProvider.GetRequiredService<AudioDbContext>();
+    y.Database.Migrate();
+}
+
+
+
 // IF 'dotnet run seeddata' is run, the app wil seed data
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
 {
