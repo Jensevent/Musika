@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Audio.Microservice.Migrations
 {
     [DbContext(typeof(AudioDbContext))]
-    [Migration("20220516142212_initialDb")]
+    [Migration("20220523141828_initialDb")]
     partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
