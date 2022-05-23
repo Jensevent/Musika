@@ -16,9 +16,10 @@ namespace Audio.Microservice.Context
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .Build();
+                .AddEnvironmentVariables();
 
-            var connectionString = configuration.GetConnectionString("AppDb");
+
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
