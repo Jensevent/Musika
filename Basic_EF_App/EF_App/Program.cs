@@ -7,8 +7,10 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add a connection to Db
-var connectionString = builder.Configuration.GetConnectionString("AppDb");
+//var connectionString = builder.Configuration.GetConnectionString("AppDb");
+var connectionString = builder.Configuration.GetSection("SQLConn").Value;
 builder.Services.AddDbContext<WeatherForecastDbContext>(x => x.UseSqlServer(connectionString));
+
 
 // Add the dataseeder service
 builder.Services.AddTransient<DataSeeder>();

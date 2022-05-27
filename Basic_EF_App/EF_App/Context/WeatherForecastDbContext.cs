@@ -26,11 +26,11 @@ namespace EF_App.Context
                .Build();
 
                 connectionString = configuration.GetConnectionString("AppDb");
-
+                connectionString = configuration.GetSection("SQLConn").Value;
             }
             else
             {
-                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:AppDb");
+                connectionString = Environment.GetEnvironmentVariable("SQLConn");
                 Console.Write(connectionString);
             }
 
