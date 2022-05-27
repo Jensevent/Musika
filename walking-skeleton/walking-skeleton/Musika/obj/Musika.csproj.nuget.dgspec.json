@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\Musika\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj": {}
+    "D:\\Git\\Musika walking skeleton\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj": {}
   },
   "projects": {
-    "D:\\Git\\Musika\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj": {
+    "D:\\Git\\Musika walking skeleton\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\Musika\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj",
+        "projectUniqueName": "D:\\Git\\Musika walking skeleton\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj",
         "projectName": "Musika",
-        "projectPath": "D:\\Git\\Musika\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj",
+        "projectPath": "D:\\Git\\Musika walking skeleton\\walking-skeleton\\walking-skeleton\\Musika\\Musika.csproj",
         "packagesPath": "C:\\Users\\jhees\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\Musika\\walking-skeleton\\walking-skeleton\\Musika\\obj\\",
+        "outputPath": "D:\\Git\\Musika walking skeleton\\walking-skeleton\\walking-skeleton\\Musika\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jhees\\AppData\\Roaming\\NuGet\\NuGet.Config",
