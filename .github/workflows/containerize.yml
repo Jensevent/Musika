@@ -1,0 +1,131 @@
+name: Development
+on:
+  push:
+    branches: [kubernetes]
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        PATH_TO_CSPROJ:
+          - "./Basic_EF_App/EF_App/EF_App.csproj"
+
+    steps:
+      - name: Clone repo to runner
+        uses: actions/checkout@v3
+
+      - name: build 
+        uses: ./.github/actions/build
+        with:
+          PATH_TO_CSPROJ: ${{matrix.PATH_TO_CSPROJ}}
+
+    
+
+  containerize:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    strategy:
+      matrix: 
+        array: [
+          {
+            PATH_TO_DOCKERFILE: "./Basic_EF_App/EF_App/",
+            DOCKER_IMAGE_NAME: "ef_app",
+            DOCKER_REPO_NAME: "jensevent/ef_app"
+          }
+      ]
+
+    steps:
+    - name: Clone repo to runner
+      uses: actions/checkout@v3
+
+    - name: build 
+      uses: ./.github/actions/docker
+      with:
+        PATH_TO_DOCKERFILE: ${{matrix.array.PATH_TO_DOCKERFILE}}
+        DOCKER_IMAGE_NAME: ${{matrix.array.DOCKER_IMAGE_NAME}}
+        DOCKER_REPO_NAME: ${{matrix.array.DOCKER_REPO_NAME}}
+        DOCKER_ACCTOKEN: ${{secrets.DOCKER_ACCTOKEN}}
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+
+    # WORKS WITH V1 Actions
+    # runs-on: ubuntu-latest
+    # strategy:
+    #   matrix: 
+    #     array: [
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+    #       },
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Chords.Microservice/Chords.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Chords.Microservice.Test/Chords.Microservice.Test.csproj"
+    #       }
+    #     ]
+
+    # steps:
+    #   - name: Clone repo to runner
+    #     uses: actions/checkout@v3
+    
+    #   - name: build 
+    #     uses: ./.github/actions/test
+    #     with:
+    #       PATH_TO_CSPROJ: ${{matrix.array.PATH_TO_CSPROJ}}
+    #       PATH_TO_TEST_CSPROJ: ${{matrix.array.PATH_TO_TEST_CSPROJ}}
+
+
+
+
+
+
+
+    # WORKS
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Clone repo to runner
+    #     uses: actions/checkout@v3
+    
+    #   - name: build 
+    #     uses: ./.github/actions/test
+    #     with:
+    #       PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+    #       PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+
+
+    # runs-on: ubuntu-latest  
+    # strategy:
+    #   matrix:
+    #     test: [
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+    #       },
+    #       {
+    #         PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj",
+    #         PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"
+    #       }
+    #     ]
+
+    #  uses: Jensevent/Musika/.github/workflows/template.yml@dev
+    #   with:
+    #     PATH_TO_CSPROJ: ${{matrix.test.PATH_TO_CSPROJ}}
+    #     PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}         
+
+
+
+
+    # WORKS
+    # uses: Jensevent/Musika/.github/workflows/template.yml@dev
+    # with:
+    #   PATH_TO_CSPROJ: "./Musika.Backend/Audio.Microservice/Audio.Microservice.csproj"
+    #   PATH_TO_TEST_CSPROJ: "./Musika.Backend/Audio.Microservice.Test/Audio.Microservice.Test.csproj"      
+
+    
+    # steps:
+    #   - uses: actions/checkout@v3
+
+    #   - uses: Jensevent/Musika/.github/workflows/template.yml@dev
+    #     with:
+    #       PATH_TO_CSPROJ: ${{matrix.test.PATH_TO_CSPROJ}},
+    #       PATH_TO_TEST_CSPROJ: ${{matrix.test.PATH_TO_TEST_CSPROJ}}
