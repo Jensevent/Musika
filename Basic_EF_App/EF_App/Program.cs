@@ -60,11 +60,17 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/", () =>
 {
+    
+    
     return "Hello World!";
 });
 
 app.MapGet("/weatherforecasts", ([FromServices] IWeatherForecastDAL db) =>
 {
+    if (db.GetWeatherForecast().ToArray().Length == 0)
+    {
+        SeedData(app);
+    }
     return db.GetWeatherForecast();
 });
 
