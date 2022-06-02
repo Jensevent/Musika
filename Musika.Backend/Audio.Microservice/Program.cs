@@ -93,7 +93,7 @@ app.MapPost("/upload", (HttpRequest request) =>
         string name = Guid.NewGuid() + extension;
 
         // Connect to my FTP server
-        var client = new FluentFTP.FtpClient("192.168.150.128", "testuser", "root");
+        var client = new FluentFTP.FtpClient("192.168.150.130", "bob", "root");
         client.AutoConnect();
         
         // Turn the file into a byte[]
@@ -107,20 +107,22 @@ app.MapPost("/upload", (HttpRequest request) =>
 
         // Disconnect the client
         client.Disconnect();
+
+        Console.Write(name);
     }
 });
 
 app.MapGet("/download", () =>
 {
     // Connect to FTP server
-    var client = new FluentFTP.FtpClient("192.168.150.128", "testuser", "root");
+    var client = new FluentFTP.FtpClient("192.168.150.130", "bob", "root");
     client.AutoConnect();
 
     // Creating a new memory stream to save the file to
     var ms = new MemoryStream();
 
     // Download the file to the memory stream
-    client.Download(ms,"1bd792f4-9582-4f26-b69b-19a6a7e8884e.png");
+    client.Download(ms, "b00e0a88-e48a-435c-a7ab-3167d9d627d0.png");
     
     // Turn the memory stream into a byte[]
     var array = ms.ToArray();
