@@ -60,8 +60,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/", () =>
 {
-    
-    
     return "Hello World!";
 });
 
