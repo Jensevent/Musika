@@ -1,4 +1,4 @@
-name: sonarloud
+name: Sonarcloud
 on:
   push:
     branches: [dev]
