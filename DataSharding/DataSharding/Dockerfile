@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["EF_App.csproj", "EF_App/"]
-RUN dotnet restore "EF_App/EF_App.csproj"
-WORKDIR "/src/EF_App"
+COPY ["DataSharding/DataSharding.csproj", "DataSharding/"]
+RUN dotnet restore "DataSharding/DataSharding.csproj"
 COPY . .
-RUN dotnet build "EF_App.csproj" -c Release -o /app/build
+WORKDIR "/src/DataSharding"
+RUN dotnet build "DataSharding.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "EF_App.csproj" -c Release -o /app/publish
+RUN dotnet publish "DataSharding.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "EF_App.dll"]
+ENTRYPOINT ["dotnet", "DataSharding.dll"]
